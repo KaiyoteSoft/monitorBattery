@@ -16,6 +16,7 @@ finalList = []
 #Variables
 
 def apc_probe():
+   finalList = []
    onWarning = True
    warningLevelBattery = 50
    counter = 0
@@ -66,6 +67,8 @@ def apc_probe():
       print(counter) 
       if counter > 3:
          counter = 0
+         # print("Hello world")
+         finalList = []
          monthlyReport.monthlyReport()
 
       else:
@@ -74,7 +77,7 @@ def apc_probe():
             f.seek(0, 0)
             f.write(finalString + "\n")
             finalString = None 
-            del finalList[:]
+            print(finalList)
 
       time.sleep(2) #Take a 5 second break
 
