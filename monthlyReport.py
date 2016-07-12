@@ -11,16 +11,13 @@ class monthlyCheck:
 
 	
 	def exportInfo(self):
-	# print("APC Battery charge is at 50 percent. It is recommended that you check the battery ASAP!")
-	# syslog.openlog('[UPS]')
-	# def log(msg):
-	#         syslog.syslog(str(msg))
 
 		GMAIL_ADDRESS = 'Spikeyhedgehog141@gmail.com'
 		GMAIL_PASSWORD = 'smtrout141'
 
 		from_email = GMAIL_ADDRESS
-		to_emails = ["jlittle@stanford.edu"]
+		#to_emails = ["jlittle@stanford.edu"]
+		to_emails = ["kaioda141@gmail.com"]
 
 		msg_subject = "REPORT: Monthly Report from APC Battery"
 		msg_text = "The following information below concerns the APC Battery in room PP2. Take a quick look at the data and make sure that battery voltage and charge remain constant throughout the month. \n \n %s" % self.data 

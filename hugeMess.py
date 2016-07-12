@@ -1,6 +1,6 @@
 #Constants (Modify these to match your own settings)
+import monthlyReport 
 import warningLevel
-import monthlyReport
 import shutil
 import os
 
@@ -17,8 +17,14 @@ finalList = []
 
 def apc_probe():
    finalList = []
+   checkBatteryLevel = True
+   logData = True
+   lowOnWarning = True
+   lowLevelBattery = 75
    onWarning = True
    warningLevelBattery = 50
+   dangerOnWarning = True
+   dangerLevelBattery = 20   
    counter = 0
    batt = 100   #Needs to be >MINBATT to not do a false processor stop
    # dict = {'LINEV' : LINEV, 'BATTV' : BATTV, 'LOADPCT' : LOADPCT, 'BCHARGE' : BCHARGE}
@@ -42,15 +48,35 @@ def apc_probe():
                   batteryLevel = val.split(' ',1)[0]
                   batteryLevel = float(batteryLevel)
                   batteryLevel = int(batteryLevel)
-                  # print(onWarning)
-                  # print(batteryLevel)
-                  # print(warningLevelBattery)
-                  if batteryLevel <= warningLevelBattery and onWarning == True:
-                     warningLevel.warningMessage()
+
+################## CHECKING FOR BATTERY LEVELS
+                  if batteryLevel <= lowLevelBattery and battery Level > warningLevelBattery and lowOnWarning == True:
+                     w = warningLevel.warningCheck()
+                     w.monthlyReport()
+                     w.warningMessage75()
+                     print("Check battery")
+                     lowOnWarning = False
+                  if batteryLevel > lowLevelBattery and lowOnWarning == False:
+                     lowOnWarning = True
+
+                  if batteryLevel <= warningLevelBattery and battery Level > dangerLevelBattery and onWarning == True:
+                     w = warningLevel.warningCheck()
+                     w.monthlyReport()
+                     w.warningMessage()
                      print("Check battery")
                      onWarning = False
                   if batteryLevel > warningLevelBattery and onWarning == False:
                      onWarning = True
+
+                  if batteryLevel <= dangerLevelBattery and dangerOnWarning == True:
+                     w = warningLevel.warningCheck()
+                     w.monthlyReport()
+                     w.warningMessage20()
+                     print("Check battery")
+                     dangerOnWarning = False
+                  if batteryLevel > dangerLevelBattery and dangerOnWarning == False:
+                     dangerOnWarning = True
+################## CHECKING FOR BATTERY LEVELS
 
                if key == 'BATTV':
                   key = 'Battery Voltage'
@@ -65,11 +91,13 @@ def apc_probe():
 
       counter = counter + 1
       print(counter) 
-      if counter > 3:
+      if counter > 30:
          counter = 0
          # print("Hello world")
+         m = monthlyReport.monthlyCheck()
+         m.monthlyReport()
+         # m.exportInfo()
          finalList = []
-         monthlyReport.monthlyReport()
 
       else:
          with open("batteryLogData.txt", 'r+') as f:
@@ -77,9 +105,9 @@ def apc_probe():
             f.seek(0, 0)
             f.write(finalString + "\n")
             finalString = None 
-            print(finalList)
+            # print(finalList)
 
-      time.sleep(2) #Take a 5 second break
+      time.sleep(86400) #Take one day break in between the loops
 
 #Main Loop
 apc_probe()
