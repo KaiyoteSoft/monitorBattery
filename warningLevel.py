@@ -20,8 +20,8 @@ class warningCheck:
 		GMAIL_PASSWORD = 'smtrout141'
 
 		from_email = GMAIL_ADDRESS
-		# to_emails = ["jlittle@stanford.edu"]
-		to_emails = ["kaioda141@gmail.com"]
+		to_emails = ["jlittle@stanford.edu"]
+		# to_emails = ["kaioda141@gmail.com"]
 
 		msg_subject = "WARNING: APC Battery Health Low"
 		msg_text = "APC Battery charge is at 75 percent. It is recommended that you check the battery and replace if needed. Here is the most recent daily battery data: \n \n %s" % self.data
@@ -49,8 +49,8 @@ class warningCheck:
 		GMAIL_PASSWORD = 'smtrout141'
 
 		from_email = GMAIL_ADDRESS
-		# to_emails = ["jlittle@stanford.edu"]
-		to_emails = ["kaioda141@gmail.com"]
+		to_emails = ["jlittle@stanford.edu"]
+		# to_emails = ["kaioda141@gmail.com"]
 
 		msg_subject = "WARNING: APC Battery Health Declining"
 		msg_text = "APC Battery charge in Room PP2 is at 50 percent. It is recommended that you check the battery ASAP! Here is the most recent daily battery data: \n \n %s" % self.data
@@ -77,8 +77,8 @@ class warningCheck:
 		GMAIL_PASSWORD = 'smtrout141'
 
 		from_email = GMAIL_ADDRESS
-		# to_emails = ["jlittle@stanford.edu"]
-		to_emails = ["kaioda141@gmail.com"]
+		to_emails = ["jlittle@stanford.edu"]
+		# to_emails = ["kaioda141@gmail.com"]
 
 		msg_subject = "DANGER: APC Battery Health FAILING"
 		msg_text = "APC Battery charge is at 20 percent. Shutdowns and loss of data are imminent. Here is the most recent daily battery data: \n \n %s" % self.data
