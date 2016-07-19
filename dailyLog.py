@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #Constants (Modify these to match your own settings)
 import subprocess   #For OS calls
 import time

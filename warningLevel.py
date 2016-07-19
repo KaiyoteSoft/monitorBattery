@@ -21,10 +21,10 @@ class warningCheck:
 
 		from_email = GMAIL_ADDRESS
 		to_emails = ["jlittle@stanford.edu"]
-		# to_emails = ["kaioda141@gmail.com"]
+		#to_emails = ["kaioda141@gmail.com"]
 
 		msg_subject = "WARNING: APC Battery Health Low"
-		msg_text = "APC Battery charge is at 75 percent. It is recommended that you check the battery and replace if needed. Here is the most recent daily battery data: \n \n %s" % self.data
+		msg_text = "APC Battery on the first floor of the Allen building is below 75 percent. It is recommended that you check the battery and replace if needed. Here is the most recent daily battery data: \n \n %s" % self.data
 
 		log(msg_subject)
 
@@ -50,10 +50,10 @@ class warningCheck:
 
 		from_email = GMAIL_ADDRESS
 		to_emails = ["jlittle@stanford.edu"]
-		# to_emails = ["kaioda141@gmail.com"]
+		#to_emails = ["kaioda141@gmail.com"]
 
 		msg_subject = "WARNING: APC Battery Health Declining"
-		msg_text = "APC Battery charge in Room PP2 is at 50 percent. It is recommended that you check the battery ASAP! Here is the most recent daily battery data: \n \n %s" % self.data
+		msg_text = "APC Battery on the first floor of the Allen building is below 50 percent. It is recommended that you check the battery ASAP! Here is the most recent daily battery data: \n \n %s" % self.data
 
 		log(msg_subject)
 
@@ -68,7 +68,7 @@ class warningCheck:
 		s.quit()
 
 	def warningMessage20(self):
-		print("APC Battery charge is at 20 percent. Shutdowns and loss of data are imminent.")
+		print("APC Battery on the first floor of the Allen building is below 20 percent. Shutdowns and loss of data are imminent.")
 		syslog.openlog('[UPS]')
 		def log(msg):
 		        syslog.syslog(str(msg))
@@ -78,10 +78,10 @@ class warningCheck:
 
 		from_email = GMAIL_ADDRESS
 		to_emails = ["jlittle@stanford.edu"]
-		# to_emails = ["kaioda141@gmail.com"]
+		#to_emails = ["kaioda141@gmail.com"]
 
 		msg_subject = "DANGER: APC Battery Health FAILING"
-		msg_text = "APC Battery charge is at 20 percent. Shutdowns and loss of data are imminent. Here is the most recent daily battery data: \n \n %s" % self.data
+		msg_text = "APC Battery on the first floor of the Allen building is below 20 percent. Shutdowns and loss of data are imminent. Here is the most recent daily battery data: \n \n %s" % self.data
 
 		log(msg_subject)
 
